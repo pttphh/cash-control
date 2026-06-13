@@ -1,9 +1,10 @@
-import { createClient } from "@/lib/supabase/server";
+﻿import { createClient } from "@/lib/supabase/server";
 import { getProfileByUserId } from "@/lib/profile";
 import type { Profile, UserRole } from "@/lib/types";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
-export async function getSessionProfile(): Promise<Profile | null> {
+export const getSessionProfile = cache(async (): Promise<Profile | null> => {
   const supabase = await createClient();
   const {
     data: { user },
@@ -12,7 +13,7 @@ export async function getSessionProfile(): Promise<Profile | null> {
   if (!user) return null;
 
   return getProfileByUserId(user.id);
-}
+});
 
 export async function requireAuth(): Promise<Profile> {
   const profile = await getSessionProfile();
