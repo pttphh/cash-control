@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors disabled:opacity-50;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white px-4 py-2 rounded-md hover:bg-red-800 transition-colors disabled:opacity-50;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-50 transition-colors;
+  }
+
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .data-table th {
+    @apply border border-gray-300 bg-gray-100 px-3 py-2 text-left font-medium;
+  }
+
+  .data-table td {
+    @apply border border-gray-300 px-3 py-2;
+  }
+
+  .data-table tbody tr:nth-child(even) {
+    @apply bg-gray-50;
+  }
+
+  .summary-card {
+    @apply bg-white border border-gray-200 rounded-lg p-4;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-area {
+    width: 210mm;
+    min-height: 297mm;
+    font-size: 10.5pt;
+    padding: 10mm;
+  }
+
+  body {
+    background: white;
+  }
+}
